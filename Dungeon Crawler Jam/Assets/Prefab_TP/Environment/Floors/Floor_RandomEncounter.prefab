@@ -57,8 +57,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9101d8435c67748a96f7f82a481869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encounterRate: 10
-  EncounterTimer: 10
+  DEFAULT_ENCOUNTER_THRESHOLD: 10
+  timerMin: 1
+  timerMax: 100
+  EncounterRate: 1
 --- !u!1 &4023702748085075551
 GameObject:
   m_ObjectHideFlags: 0
