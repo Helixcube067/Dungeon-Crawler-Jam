@@ -38,12 +38,15 @@ public class Player_Interactions : MonoBehaviour
 
             if(interactable != null)
             {
-                Debug.Log("Hit an interactable!");
+                
                 // If the object is within range
                 if(interactableHit.distance <= interactable.MaxRange)
                 {
+                   
+                    
                     if(interactable == currentTarget)
                     {
+                        
                         return;
                     }
                     else if(currentTarget != null)
@@ -51,12 +54,14 @@ public class Player_Interactions : MonoBehaviour
                         currentTarget.OnEndHover();
                         currentTarget = interactable;
                         currentTarget.OnStartHover();
+                        
                         return;
                     }
                     else
                     {
                         currentTarget = interactable;
                         currentTarget.OnStartHover();
+                        
                         return;
                     }
                 }
@@ -66,6 +71,7 @@ public class Player_Interactions : MonoBehaviour
                     {
                         currentTarget.OnEndHover();
                         currentTarget = null;
+                        
                         return;
                     }
                 }

@@ -21,11 +21,14 @@ public class Player_Movement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
                 this.transform.position += transform.forward;
-            else if (Input.GetKeyDown(KeyCode.S) && !Physics.Raycast(transform.position, -transform.forward, rayLength))
+        }
+        if(!Physics.Raycast(transform.position, -transform.forward, rayLength))
+        {
+            if (Input.GetKeyDown(KeyCode.S) && !Physics.Raycast(transform.position, -transform.forward, rayLength))
                 this.transform.position += -transform.forward;
-            
         }
         
+
         if (Input.GetKeyDown(KeyCode.A))
             this.transform.rotation *= Quaternion.Euler(0, -90, 0);
         else if (Input.GetKeyDown(KeyCode.D))
