@@ -562,6 +562,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffdcf69432430c49bbe74568a53f924, type: 3}
+--- !u!1 &512002079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5805503986365931473, guid: 4b6ee8e2aa5e4d8499d3c13008d1f0b8, type: 3}
+  m_PrefabInstance: {fileID: 1751684573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &515922521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1872,7 +1877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1700278586
 PrefabInstance:
@@ -1945,7 +1950,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3601445759785315246, guid: 4b6ee8e2aa5e4d8499d3c13008d1f0b8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3601445759785315246, guid: 4b6ee8e2aa5e4d8499d3c13008d1f0b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1995,6 +2000,10 @@ PrefabInstance:
       propertyPath: maxRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5122149065158086167, guid: 4b6ee8e2aa5e4d8499d3c13008d1f0b8, type: 3}
+      propertyPath: interactionText
+      value: 
+      objectReference: {fileID: 512002079}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b6ee8e2aa5e4d8499d3c13008d1f0b8, type: 3}
 --- !u!1001 &1780853786
@@ -2496,6 +2505,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 736245342}
     - target: {fileID: 6636398203164161730, guid: 098258fd96f05e6408482def5e20b605, type: 3}
+      propertyPath: orthographic size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636398203164161730, guid: 098258fd96f05e6408482def5e20b605, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 1024
       objectReference: {fileID: 0}
@@ -2505,15 +2518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6636398203164161731, guid: 098258fd96f05e6408482def5e20b605, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636398203164161731, guid: 098258fd96f05e6408482def5e20b605, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.35
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6636398203164161731, guid: 098258fd96f05e6408482def5e20b605, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636398203164161731, guid: 098258fd96f05e6408482def5e20b605, type: 3}
       propertyPath: m_LocalRotation.w

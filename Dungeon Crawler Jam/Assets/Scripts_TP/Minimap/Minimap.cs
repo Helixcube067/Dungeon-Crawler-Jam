@@ -11,7 +11,7 @@ public class Minimap : MonoBehaviour
     {
         newPos.x = player.position.x;
         newPos.y = transform.position.y;
-        newPos.z = transform.position.z;
+        newPos.z = player.position.z;
         transform.position = newPos;
     }
 }
