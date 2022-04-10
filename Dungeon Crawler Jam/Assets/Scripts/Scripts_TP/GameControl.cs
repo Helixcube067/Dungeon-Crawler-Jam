@@ -23,6 +23,15 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private SceneMovement sceneMovement;
 
+    [SerializeField]
+    private GameObject battleUI;
+
+    [SerializeField]
+    private Player_Movement player;
+
+    [SerializeField]
+    private GameObject minimap;
+
     // private BattleUIClass battleUI;
 
     public int testNum = 10;
@@ -61,6 +70,28 @@ public class GameControl : MonoBehaviour
     public void UnPause()
     {
         Time.timeScale = 1;
+    }
+
+    public void LoadLevel(string scene)
+    {
+        sceneMovement.LoadLevel(scene);
+    }
+
+    public void StartBattleUI()
+    {
+        // Turn off Mini-Map
+        minimap.SetActive(false);
+        // Turn on Battle UI
+        battleUI.SetActive(true);
+        // Stop Player movement
+        player.inBattle = true;
+    }
+
+    public void StopBattleUI()
+    {
+        battleUI.SetActive(false);
+        player.inBattle = false;
+        minimap.SetActive(true);
     }
 
     private void OnGUI()

@@ -13,12 +13,14 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField]
     private int EncounterRate;
 
+    private GameObject player;
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if(other.tag == "Player")
         {
             CheckRandomEncounter();
+            player = other.gameObject;
         }
     }
 
@@ -37,7 +39,7 @@ public class EncounterGenerator : MonoBehaviour
     private void StartEncounter()
     {
         Debug.Log("Starting encounter");
-        // Pause time.delta time
-        // Transition to Battle UI screen
+
+        GameControl.control.StartBattleUI();
     }
 }
