@@ -7,7 +7,7 @@ public enum Type{Fire, Grass, Water}
 [CreateAssetMenu(fileName = "New Monster", menuName = "ScriptableObjects/New Monster", order = 1)]
 public class Monster : ScriptableObject
 {
-    public int maxHealth, attack, defense, currHealth;
+    public int maxHealth, attack, defense, currHealth, currLevel, expReward;
     public new string name;
     public Sprite monsterPic;
     public Type type;
@@ -15,6 +15,7 @@ public class Monster : ScriptableObject
     public float baseCatchRate;
     float addedCatchRate = 0f;
     bool isAlive = true;
+    int currExp;
     public void TakeDamage(int unmitigatedDmg, Type damageType)
     {
         //weakness calculations with a 1.5 ratio boost
@@ -57,5 +58,27 @@ public class Monster : ScriptableObject
         else
             addedCatchRate = 0;
         return baseCatchRate + addedCatchRate;
+    }
+
+    public void GainExp(int exp) {
+        currExp += exp;
+    }
+
+    public int GetExp() {
+        return currExp;
+    }
+    public void LevelUp()
+    {
+        maxHealth += 10;
+        currHealth += 10;
+        int decider1 = Random.Range(0, 3);
+        int decider2 = Random.Range(0, 3);
+        if (decider1 >= 1)
+            attack++;
+        if (decider2 >= 1)
+            defense++;
+        currExp -= 100;
+        currLevel++;
+        Debug.Log("Congrats! Your " + name + " has leveled up!");
     }
 }
