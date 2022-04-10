@@ -11,8 +11,6 @@ public class ObstacleToSpawn : MonoBehaviour
         int rand = Random.Range(0, obstacles.Length);
         foreach(Transform child in transform)
         {
-            Debug.Log("Child names = " + child.name);
-            Debug.Log("random name = " + obstacles[rand].name);
             if(child.gameObject == obstacles[rand].gameObject)
             {
                 obstacles[rand].SetActive(true);

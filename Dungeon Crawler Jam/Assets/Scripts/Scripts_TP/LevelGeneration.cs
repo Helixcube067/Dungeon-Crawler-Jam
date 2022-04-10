@@ -44,6 +44,10 @@ public class LevelGeneration : MonoBehaviour
 
     [SerializeField]
     private LayerMask roomMask;
+
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,7 @@ public class LevelGeneration : MonoBehaviour
         Instantiate(dungeonRooms[0], transform.position, Quaternion.identity);
 
         direction = Random.Range(1, 6);
+        
     }
     private void Update()
     {
@@ -86,6 +91,7 @@ public class LevelGeneration : MonoBehaviour
                 randRoom = Random.Range(0, dungeonRooms.Length);
 
                 Instantiate(dungeonRooms[rand], transform.position, Quaternion.identity);
+                
 
                 direction = Random.Range(1, 6);
                 if(direction == 3)
@@ -119,6 +125,7 @@ public class LevelGeneration : MonoBehaviour
 
                 randRoom = Random.Range(0, dungeonRooms.Length);
                 Instantiate(dungeonRooms[randRoom], transform.position, Quaternion.identity);
+               
             }
             else
             {
@@ -146,6 +153,7 @@ public class LevelGeneration : MonoBehaviour
                                 randBottomRoom = 1;
                             }
                             Instantiate(dungeonRooms[randBottomRoom], transform.position, Quaternion.identity);
+                            
 
                         }
                     }
@@ -160,7 +168,9 @@ public class LevelGeneration : MonoBehaviour
 
                 rand = Random.Range(2, 4); 
 
+
                 Instantiate(dungeonRooms[rand], transform.position, Quaternion.identity);
+                
             }
             else
             {
@@ -180,16 +190,21 @@ public class LevelGeneration : MonoBehaviour
     // Iterate through the remaining positions, check for a room there, if no room spawn a random one.
     private void FillLevl()
     {
-        Debug.Log("Called fill");
-        for(int i = 0; i < allSpawnPositions.Length; i++)
-        {
-            Collider2D roomCheck = Physics2D.OverlapCircle(allSpawnPositions[i].transform.position, 1, roomMask);
+        //Debug.Log("Called fill");
 
-            if (!roomCheck)
-            {
-                Instantiate(dungeonRooms[0], allSpawnPositions[i].position, Quaternion.identity);
-            }
-        }
+        //foreach(Vector3 positions in spawnPos)
+        //{
+        //    Debug.Log(transform.position);
+        //}
+
+        //for(int i = 0; i < allSpawnPositions.Length; i++)
+        //{
+        //    if(!spawnPos.Contains(allSpawnPositions[i].transform.position))
+        //    {
+        //        Debug.Log("spawning at " + allSpawnPositions[i]);
+        //        Instantiate(dungeonRooms[0], allSpawnPositions[i].position, Quaternion.identity);
+        //    }
+        //}
     }
 
 }

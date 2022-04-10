@@ -117,6 +117,17 @@ MonoBehaviour:
   timerMin: 1
   timerMax: 100
   EncounterRate: 1
+  encounterTable:
+  - {fileID: 11400000, guid: 36f6992778089b54d99d5978ebe5a4a3, type: 2}
+  - {fileID: 11400000, guid: 2d717d66dad4aa64cac690237e12f5f5, type: 2}
+  - {fileID: 11400000, guid: c99f67c203fda814abe76222020a38d1, type: 2}
+  - {fileID: 11400000, guid: 36f6992778089b54d99d5978ebe5a4a3, type: 2}
+  - {fileID: 11400000, guid: 2d717d66dad4aa64cac690237e12f5f5, type: 2}
+  - {fileID: 11400000, guid: c99f67c203fda814abe76222020a38d1, type: 2}
+  - {fileID: 11400000, guid: 36f6992778089b54d99d5978ebe5a4a3, type: 2}
+  - {fileID: 11400000, guid: 2d717d66dad4aa64cac690237e12f5f5, type: 2}
+  - {fileID: 11400000, guid: c99f67c203fda814abe76222020a38d1, type: 2}
+  assignEnemy: {fileID: 0}
 --- !u!1 &2227805880462609540
 GameObject:
   m_ObjectHideFlags: 0

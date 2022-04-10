@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum SceneNames
 {
@@ -32,6 +33,10 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private GameObject minimap;
 
+    public int currentLevel = 1;
+
+    public Image currentEnemy;
+
     // private BattleUIClass battleUI;
 
     public int testNum = 10;
@@ -49,6 +54,11 @@ public class GameControl : MonoBehaviour
             Destroy(gameObject);
         }
         
+    }
+
+    public void SetCurrentEnemy(Monster newCurrent)
+    {
+        currentEnemy.sprite = newCurrent.monsterPic;
     }
 
     public void GameOver()
