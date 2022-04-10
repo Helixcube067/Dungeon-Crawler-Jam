@@ -533,7 +533,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1654926958}
   - component: {fileID: 1654926960}
-  - component: {fileID: 1654926959}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -555,18 +554,6 @@ Transform:
   m_Father: {fileID: 1785798968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1654926959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654926957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aae91715364bae8418280d4439d27629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1654926960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -929,6 +916,18 @@ PrefabInstance:
     - target: {fileID: 3357561452493452771, guid: 7f04cb92bb8950d43ad11dc6a96bde41, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357561454076258814, guid: 7f04cb92bb8950d43ad11dc6a96bde41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357561454076258814, guid: 7f04cb92bb8950d43ad11dc6a96bde41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357561454076258814, guid: 7f04cb92bb8950d43ad11dc6a96bde41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f04cb92bb8950d43ad11dc6a96bde41, type: 3}

@@ -17,6 +17,14 @@ public class GameControl : MonoBehaviour
     // List of current player party members
     public List<GameObject> playerParty;
 
+    [SerializeField]
+    private GameLoss gameLossUI;
+
+    [SerializeField]
+    private SceneMovement sceneMovement;
+
+    // private BattleUIClass battleUI;
+
     public int testNum = 10;
     
     void Awake()
@@ -31,6 +39,28 @@ public class GameControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+    }
+
+    public void GameOver()
+    {
+        if (gameLossUI == null) return;
+
+            //Pause();
+        Debug.Log("escape is pressed");
+        gameLossUI.Setup();
+        // Pause the game
+        
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1;
     }
 
     private void OnGUI()
