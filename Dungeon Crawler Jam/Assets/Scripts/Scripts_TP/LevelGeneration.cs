@@ -183,16 +183,11 @@ public class LevelGeneration : MonoBehaviour
         Debug.Log("Called fill");
         for(int i = 0; i < allSpawnPositions.Length; i++)
         {
-            Debug.Log("i = " + i);
-            Collider[] collider = Physics.OverlapSphere(allSpawnPositions[i].position, 1, roomMask);
-            Debug.Log("collider length = " + collider.Length);
-            foreach (Collider col in collider)
+            Collider2D roomCheck = Physics2D.OverlapCircle(allSpawnPositions[i].transform.position, 1, roomMask);
+
+            if (!roomCheck)
             {
-                Debug.Log(col.name);
-                if (!col)
-                {
-                    Instantiate(dungeonRooms[0], allSpawnPositions[i].position, Quaternion.identity);
-                }
+                Instantiate(dungeonRooms[0], allSpawnPositions[i].position, Quaternion.identity);
             }
         }
     }
