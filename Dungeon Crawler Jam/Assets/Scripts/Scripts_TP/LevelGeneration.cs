@@ -90,6 +90,7 @@ public class LevelGeneration : MonoBehaviour
 
                 randRoom = Random.Range(0, dungeonRooms.Length);
 
+                Debug.Log("Move right room spawned at " + transform.position);
                 Instantiate(dungeonRooms[rand], transform.position, Quaternion.identity);
                 
 
@@ -125,7 +126,9 @@ public class LevelGeneration : MonoBehaviour
 
                 randRoom = Random.Range(0, dungeonRooms.Length);
                 Instantiate(dungeonRooms[randRoom], transform.position, Quaternion.identity);
-               
+                Debug.Log("Move left room spawned at " + transform.position);
+                return;
+
             }
             else
             {
@@ -153,7 +156,8 @@ public class LevelGeneration : MonoBehaviour
                                 randBottomRoom = 1;
                             }
                             Instantiate(dungeonRooms[randBottomRoom], transform.position, Quaternion.identity);
-                            
+                            Debug.Log("Move down room spawned at " + transform.position);
+
 
                         }
                     }
@@ -170,7 +174,7 @@ public class LevelGeneration : MonoBehaviour
 
 
                 Instantiate(dungeonRooms[rand], transform.position, Quaternion.identity);
-                
+                Debug.Log("Move Down 2 room spawned at " + transform.position);
             }
             else
             {

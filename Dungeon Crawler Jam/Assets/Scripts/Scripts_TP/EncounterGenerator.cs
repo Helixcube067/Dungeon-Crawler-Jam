@@ -70,6 +70,6 @@ public class EncounterGenerator : MonoBehaviour
                 break;
 
         }
-        GameControl.control.StartBattleUI();
+        //GameControl.control.StartBattleUI();
     }
 }

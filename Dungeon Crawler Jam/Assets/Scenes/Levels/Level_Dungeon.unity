@@ -145,6 +145,10 @@ PrefabInstance:
       value: LevelGeneration
       objectReference: {fileID: 0}
     - target: {fileID: 3093270908440947854, guid: 9f21ddac9680aae44a363e1fb3538e2f, type: 3}
+      propertyPath: maxX
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093270908440947854, guid: 9f21ddac9680aae44a363e1fb3538e2f, type: 3}
       propertyPath: dungeonRooms.Array.size
       value: 4
       objectReference: {fileID: 0}

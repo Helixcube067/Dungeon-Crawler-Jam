@@ -35,7 +35,8 @@ public class GameControl : MonoBehaviour
 
     public int currentLevel = 1;
 
-    public Image currentEnemy;
+    public Monster currentEnemy;
+    public AssignEnemy currentEnemyUI;
 
     // private BattleUIClass battleUI;
 
@@ -58,7 +59,16 @@ public class GameControl : MonoBehaviour
 
     public void SetCurrentEnemy(Monster newCurrent)
     {
-        currentEnemy.sprite = newCurrent.monsterPic;
+        //currentEnemy.monsterPic = newCurrent.monsterPic;
+        currentEnemy = newCurrent;
+        if (!currentEnemyUI)
+        {
+            Debug.Log("CurrentEnemyUI is null");
+        }
+        else
+            currentEnemyUI.SetEnemy(currentEnemy);
+
+        StartBattleUI();
     }
 
     public void GameOver()
@@ -92,7 +102,10 @@ public class GameControl : MonoBehaviour
         // Turn off Mini-Map
         minimap.SetActive(false);
         // Turn on Battle UI
-        battleUI.SetActive(true);
+        if (battleUI)
+            battleUI.SetActive(true);
+        else
+            Debug.Log("BattleUI is null");
         // Stop Player movement
         player.inBattle = true;
     }
