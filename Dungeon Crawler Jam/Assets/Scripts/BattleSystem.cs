@@ -40,7 +40,7 @@ public class BattleSystem : MonoBehaviour
         if (!playerMonster)
             Debug.Log("No player monster found");
 
-        state = BattleState.START;
+        
         StartCoroutine(SetupBattle());
     }
 
@@ -56,7 +56,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator SetupBattle()
     {
         //enemyHUD.SetHUD(enemyUnit)
-        
+        state = BattleState.START;
         yield return new WaitForSeconds(2f);
         enemyUnit = enemyGetter.GetCurrentEnemy();
         if (!enemyUnit)

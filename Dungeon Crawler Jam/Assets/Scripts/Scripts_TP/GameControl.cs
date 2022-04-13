@@ -20,18 +20,18 @@ public class GameControl : MonoBehaviour
 
     [SerializeField]
     private GameLoss gameLossUI;
-
     [SerializeField]
     private SceneMovement sceneMovement;
-
     [SerializeField]
     private GameObject battleUI;
-
     [SerializeField]
     private Player_Movement player;
-
     [SerializeField]
     private GameObject minimap;
+    [SerializeField]
+    public LevelGeneration levelGenerator;
+    [SerializeField]
+    public SpawnPlayer playerSpawner;
 
     public int currentLevel = 1;
 
@@ -54,6 +54,11 @@ public class GameControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        levelGenerator.GenerateLevel();
+        //playerSpawner.TranslatePlaterToSpawn()
+
+        
         
     }
 

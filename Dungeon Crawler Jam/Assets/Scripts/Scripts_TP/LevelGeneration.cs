@@ -38,26 +38,60 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField]
     private int maxZ;
 
-    private bool stopGeneration = false;
+    private bool stopGeneration = true;
     private bool canFill = false;
     private int randRoom;
 
     [SerializeField]
     private LayerMask roomMask;
 
+    [SerializeField]
+    private SpawnPlayer spawnPlayer;
+
+    [HideInInspector]
+    public Transform firstRoom;
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rand = Random.Range(0, startingPositions.Length);
-        transform.position = startingPositions[rand].position;
-        Instantiate(dungeonRooms[0], transform.position, Quaternion.identity);
-
-        direction = Random.Range(1, 6);
+        //rand = Random.Range(0, startingPositions.Length);
+        //transform.position = startingPositions[rand].position;
+        //Instantiate(dungeonRooms[0], transform.position, Quaternion.identity);
+        //// After the first space decided - provide transform to SpawnPlayer.
+        //firstRoom = transform;
+        //spawnPlayer.parentSpawnTransform = transform;
+        //direction = Random.Range(1, 6);
         
     }
+
+    public void GenerateLevel()
+    {
+        // Pick a random starting position for the dungeon room
+        rand = Random.Range(0, startingPositions.Length);
+        // Move this object to that position
+        transform.position = startingPositions[rand].position;
+        // Place room[0] at current location
+        GameObject roomOne = Instantiate(dungeonRooms[0], transform.position, Quaternion.identity);
+        // Assign the room to be the child of the level generator
+        roomOne.transform.SetParent(transform);
+        firstRoom = roomOne.transform;
+        // Set first room to this room so spawnPlayer can find the first room.
+        StartCoroutine("PlayerSetUp"); 
+
+        // Set direction of next room 
+        direction = Random.Range(1, 6);
+        
+        stopGeneration = false;
+    }
+
+    private IEnumerator PlayerSetUp()
+    {
+       yield return new WaitForSeconds(5);
+       spawnPlayer.TranslatePlaterToSpawn();
+    }
+
     private void Update()
     {
         if (!stopGeneration && timeBtwRoom <= 0)

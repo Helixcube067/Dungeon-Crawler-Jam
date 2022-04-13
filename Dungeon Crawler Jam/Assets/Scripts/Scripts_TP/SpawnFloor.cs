@@ -21,6 +21,7 @@ public class SpawnFloor : MonoBehaviour
     [SerializeField]
     private int numOfSafeTiles = 10;
 
+    private List<Transform> safeSpawnPositions = new List<Transform>();
 
     public GameObject[] floorTiles;
     // Start is called before the first frame update
@@ -34,6 +35,9 @@ public class SpawnFloor : MonoBehaviour
             {
                 GameObject instance = (GameObject)Instantiate(floorTiles[(int)FloorType.FloorSafe], child.transform.position, Quaternion.identity);
                 instance.transform.parent = transform;
+                Debug.Log("Adding " + child + " to safe spawn positions");
+                safeSpawnPositions.Add(child);
+                Debug.Log(safeSpawnPositions.Count);
                 
             }
             else if (child.tag == "FloorEncounter")
@@ -43,6 +47,14 @@ public class SpawnFloor : MonoBehaviour
             }
                 
         }
+
+    }
+
+    public Transform GetRandomSafeSpot()
+    {
+        int rand = Random.Range(0, safeSpawnPositions.Count);
+        Debug.Log("rand = " + rand + " safespawn.count = " + safeSpawnPositions.Count);
+        return safeSpawnPositions[rand];
     }
 
     void ShapeToSpawn(SpawnShape shape)
