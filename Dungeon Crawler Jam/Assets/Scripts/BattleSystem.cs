@@ -31,6 +31,7 @@ public class BattleSystem : MonoBehaviour
     
     void Start()
     {
+        playerMonster = PlayerParty.instance.GetNextAlive();
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -98,30 +99,22 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2f);
             if (playerMonster.GetExp() >= 100)
                 InitiateLevelUp();
-            else
-                sceneMover.LoadLevel("Overword");
         }
 
         else if (state == BattleState.LOST)
         {
             statusUpdate.text = "You lost...";
             yield return new WaitForSeconds(2f);
-            sceneMover.LoadLevel("Title screen");
+            sceneMover.LoadLevel("Title Screen");
         }  
     }
 
     IEnumerator EnemyTurn() {
-        int decision = Random.Range(0, 4);
-        if (decision >= 2)
-        {
-            statusUpdate.text = enemyUnit.name + " is attacking!";
-            
-            yield return new WaitForSeconds(2f);
-            playerMonster.TakeDamage(enemyUnit.attack, enemyUnit.type);
-            //statusUpdate.text = "You took " + dmg + " damage";
-            playerMonster.StatusCheck();
-
-        }
+        statusUpdate.text = enemyUnit.name + " is attacking!";
+        yield return new WaitForSeconds(2f);
+        playerMonster.TakeDamage(enemyUnit.attack, enemyUnit.type);
+        //statusUpdate.text = "You took " + dmg + " damage";
+        playerMonster.StatusCheck();
         yield return new WaitForSeconds(1f);
         if (playerMonster.GetStatus())
         {
@@ -129,10 +122,17 @@ public class BattleSystem : MonoBehaviour
             PlayerTurn();
         }
         else {
-            state = BattleState.LOST;
-            StartCoroutine(EndBattle());
+            playerMonster = PlayerParty.instance.GetNextAlive();
+            if (playerMonster == null)
+            {
+                state = BattleState.LOST;
+                StartCoroutine(EndBattle());
+            }
+            else {
+                state = BattleState.PLAYERTURN;
+                PlayerTurn();
+            }
         }
-
     }
 
     void InitiateLevelUp() {
