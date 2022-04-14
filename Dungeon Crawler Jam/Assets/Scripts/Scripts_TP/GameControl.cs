@@ -55,12 +55,11 @@ public class GameControl : MonoBehaviour
             Destroy(gameObject);
         }
 
-        levelGenerator.GenerateLevel();
-        //playerSpawner.TranslatePlaterToSpawn()
-
-        
+        levelGenerator.GenerateLevel();    
         
     }
+
+
 
     public void SetCurrentEnemy(Monster newCurrent)
     {

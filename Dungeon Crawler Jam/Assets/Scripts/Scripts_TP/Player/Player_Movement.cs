@@ -22,7 +22,7 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (inBattle) return;
+        if (inBattle) return;
 
         if (DetectWall(FORWARD))
         {
