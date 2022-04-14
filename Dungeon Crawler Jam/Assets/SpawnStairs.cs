@@ -14,18 +14,15 @@ public class SpawnStairs : MonoBehaviour
     public void PlaceStairs()
     {
         FindOpenSpace();
-        
-        Debug.Log(stairsUpPos.position + " " + stairsDownPos.position);
         stairsUp.transform.position = stairsUpPos.position;
         stairsDown.transform.position = stairsDownPos.position;
-        //stairsUp.transform.position = new Vector3 (0, 0, 0);
     }
 
     void FindOpenSpace()
     {
         // Go through the list of available floors.
         stairsUpPos = FindObjectOfType<SpawnFloor>().GetRandomSafeSpot();
-        stairsDownPos = FindObjectOfType<SpawnFloor>().GetRandomEncounterSpot();
+        stairsDownPos = FindObjectOfType<SpawnFloor>().GetRandomSafeSpot();
         // Place stairs
     }
 
