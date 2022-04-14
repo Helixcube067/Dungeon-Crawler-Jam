@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
+    [SerializeField]
+    private GameControl gameControl;
     #region battle handling
     public BattleState state;
     public TextMeshProUGUI mainNameText;
     public Monster playerMonster;
     public TextMeshProUGUI mainHPText;
     public Slider healthSlider;
+    public AssignEnemy enemyGetter;
     //static monster here to load in with the information without it getting lost
     public static Monster enemyUnit;
     public TextMeshProUGUI statusUpdate;
@@ -31,15 +34,15 @@ public class BattleSystem : MonoBehaviour
     
     void Start()
     {
-        playerMonster = PlayerParty.instance.GetNextAlive();
-        state = BattleState.START;
+        if (!playerMonster)
+            Debug.Log("No player monster found");
         StartCoroutine(SetupBattle());
     }
 
     void Update()
     {
-        mainNameText.text = playerMonster.name;
-        mainHPText.text = "HP: " + playerMonster.currHealth + "/" + playerMonster.maxHealth;
+        //mainNameText.text = playerMonster.name;
+        //mainHPText.text = "HP: " + playerMonster.currHealth + "/" + playerMonster.maxHealth;
         //hpSlider.value = unit.currentHP;
     }
 
@@ -48,7 +51,12 @@ public class BattleSystem : MonoBehaviour
     IEnumerator SetupBattle()
     {
         //enemyHUD.SetHUD(enemyUnit)
+        state = BattleState.START;
         yield return new WaitForSeconds(2f);
+        enemyUnit = enemyGetter.GetCurrentEnemy();
+        if (!enemyUnit)
+            Debug.Log("no enemy found");
+
         state = BattleState.PLAYERTURN;
         PlayerTurn();
         
@@ -77,6 +85,9 @@ public class BattleSystem : MonoBehaviour
     }
 
     IEnumerator PlayerAttack() {
+        Debug.Log("Attacking");
+        Debug.Log("Player monster = " + playerMonster.name);
+        Debug.Log("Enemy monster = " + enemyUnit.name);
         enemyUnit.TakeDamage(playerMonster.attack, playerMonster.type);
         yield return new WaitForSeconds(2f);
         enemyUnit.StatusCheck();
@@ -99,22 +110,34 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2f);
             if (playerMonster.GetExp() >= 100)
                 InitiateLevelUp();
+            else
+            {
+                gameControl.StopBattleUI();
+            }
+                //sceneMover.LoadLevel("Overword");
         }
 
         else if (state == BattleState.LOST)
         {
             statusUpdate.text = "You lost...";
             yield return new WaitForSeconds(2f);
-            sceneMover.LoadLevel("Title Screen");
+            sceneMover.LoadLevel("Title screen");
         }  
     }
 
     IEnumerator EnemyTurn() {
-        statusUpdate.text = enemyUnit.name + " is attacking!";
-        yield return new WaitForSeconds(2f);
-        playerMonster.TakeDamage(enemyUnit.attack, enemyUnit.type);
-        //statusUpdate.text = "You took " + dmg + " damage";
-        playerMonster.StatusCheck();
+        Debug.Log("enemy Turn");
+        int decision = Random.Range(0, 4);
+        if (decision >= 2)
+        {
+            statusUpdate.text = enemyUnit.name + " is attacking!";
+            
+            yield return new WaitForSeconds(2f);
+            playerMonster.TakeDamage(enemyUnit.attack, enemyUnit.type);
+            //statusUpdate.text = "You took " + dmg + " damage";
+            playerMonster.StatusCheck();
+
+        }
         yield return new WaitForSeconds(1f);
         if (playerMonster.GetStatus())
         {
@@ -122,17 +145,10 @@ public class BattleSystem : MonoBehaviour
             PlayerTurn();
         }
         else {
-            playerMonster = PlayerParty.instance.GetNextAlive();
-            if (playerMonster == null)
-            {
-                state = BattleState.LOST;
-                StartCoroutine(EndBattle());
-            }
-            else {
-                state = BattleState.PLAYERTURN;
-                PlayerTurn();
-            }
+            state = BattleState.LOST;
+            StartCoroutine(EndBattle());
         }
+
     }
 
     void InitiateLevelUp() {

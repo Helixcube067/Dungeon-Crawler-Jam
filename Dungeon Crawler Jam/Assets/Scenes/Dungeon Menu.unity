@@ -393,10 +393,10 @@ RectTransform:
   m_Father: {fileID: 1517924893}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.09554134, y: 0.23521869}
+  m_AnchorMin: {x: 0.09677137, y: 0.52336943}
   m_AnchorMax: {x: 0.9047067, y: 0.65656275}
-  m_AnchoredPosition: {x: -0.50006104, y: 115.855}
-  m_SizeDelta: {x: -4.763, y: -234.828}
+  m_AnchoredPosition: {x: -2.000061, y: -2.0370026}
+  m_SizeDelta: {x: -1.7630005, y: 0.95599365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244348455
 MonoBehaviour:
@@ -416,11 +416,11 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 116.56
+  m_Spacing: 31.5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
@@ -1156,8 +1156,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 666
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 876386285}
   - component: {fileID: 876386284}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Slot 4 button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1236,7 +1236,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 238.23886}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &876386284
 MonoBehaviour:
@@ -1281,7 +1281,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 876386285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877399606}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SwapPositions
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &876386285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,6 +1343,8 @@ GameObject:
   - component: {fileID: 877399603}
   - component: {fileID: 877399605}
   - component: {fileID: 877399604}
+  - component: {fileID: 877399606}
+  - component: {fileID: 877399607}
   m_Layer: 5
   m_Name: Menu panel
   m_TagString: Untagged
@@ -1396,6 +1410,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877399602}
   m_CullTransparentMesh: 1
+--- !u!114 &877399606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877399602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51177e2112b1a2c4d849a633d14e46ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leader: {fileID: 1163920542}
+  floorText: {fileID: 796849305}
+  reserves:
+  - {fileID: 1580134753}
+  - {fileID: 1901011806}
+  - {fileID: 1860573159}
+  - {fileID: 2015645352}
+  - {fileID: 1879434060}
+  tester: {fileID: 11400000, guid: c99f67c203fda814abe76222020a38d1, type: 2}
+  tester2: {fileID: 11400000, guid: 36f6992778089b54d99d5978ebe5a4a3, type: 2}
+  tester3: {fileID: 11400000, guid: 2d717d66dad4aa64cac690237e12f5f5, type: 2}
+--- !u!114 &877399607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877399602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62a73270df13634abf202f6d269a0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &944341019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,7 +1465,7 @@ GameObject:
   - component: {fileID: 944341022}
   - component: {fileID: 944341021}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Slot 5 button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1433,7 +1489,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 238.23886}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944341021
 MonoBehaviour:
@@ -1478,7 +1534,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 944341022}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877399606}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SwapPositions
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &944341022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,7 +1598,7 @@ GameObject:
   - component: {fileID: 995432886}
   - component: {fileID: 995432885}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Slot 2 button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1622,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 238.23886}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995432885
 MonoBehaviour:
@@ -1599,7 +1667,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 995432886}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877399606}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SwapPositions
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &995432886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,10 +1750,10 @@ RectTransform:
   m_Father: {fileID: 1517924893}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18112797, y: 0.708328}
-  m_AnchorMax: {x: 0.7614587, y: 0.81167203}
-  m_AnchoredPosition: {x: -0.7720337, y: 0}
-  m_SizeDelta: {x: 1.4560547, y: -0.5910034}
+  m_AnchorMin: {x: 0.18112797, y: 0.70745754}
+  m_AnchorMax: {x: 0.8355409, y: 0.81167203}
+  m_AnchoredPosition: {x: -0.91400146, y: 0.5}
+  m_SizeDelta: {x: 1.1710052, y: -1.5910001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163920542
 MonoBehaviour:
@@ -1825,7 +1905,7 @@ GameObject:
   - component: {fileID: 1580134754}
   - component: {fileID: 1580134753}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Slot 1 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1870,7 +1950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lvl 8 hannah
+  m_text: Slot 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1897,7 +1977,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.1
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2043,7 +2123,7 @@ GameObject:
   - component: {fileID: 1791738973}
   - component: {fileID: 1791738972}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Slot 1 button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2067,7 +2147,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 238.23886}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791738972
 MonoBehaviour:
@@ -2112,7 +2192,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1791738973}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877399606}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SwapPositions
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1791738973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,7 +2255,7 @@ GameObject:
   - component: {fileID: 1860573160}
   - component: {fileID: 1860573159}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Slot 3 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2208,7 +2300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Slot 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2235,7 +2327,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2297,7 +2389,7 @@ GameObject:
   - component: {fileID: 1879434061}
   - component: {fileID: 1879434060}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Slot 5 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2342,7 +2434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Slot 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2369,7 +2461,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2431,7 +2523,7 @@ GameObject:
   - component: {fileID: 1901011807}
   - component: {fileID: 1901011806}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Slot 2 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2476,7 +2568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Slot 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2503,7 +2595,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2566,7 +2658,7 @@ GameObject:
   - component: {fileID: 1913481267}
   - component: {fileID: 1913481266}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Slot 3 button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2590,7 +2682,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 238.23886}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913481266
 MonoBehaviour:
@@ -2635,7 +2727,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1913481267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877399606}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SwapPositions
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1913481267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,7 +2856,7 @@ GameObject:
   - component: {fileID: 2015645353}
   - component: {fileID: 2015645352}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Slot 4 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2797,7 +2901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Slot 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2824,7 +2928,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -13,12 +13,25 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField]
     private int EncounterRate;
 
+    [SerializeField, Tooltip("Level 1 encounter = 0 - 2, lvl 2 = 3 - 5, level 3 = 6 - 9")]
+    private Monster[] encounterTable;
+
+    [SerializeField]
+    private AssignEnemy assignEnemy;
+
+    private GameObject player;
+
+    private void Awake()
+    {
+         
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if(other.tag == "Player")
         {
             CheckRandomEncounter();
+            player = other.gameObject;
         }
     }
 
@@ -37,7 +50,26 @@ public class EncounterGenerator : MonoBehaviour
     private void StartEncounter()
     {
         Debug.Log("Starting encounter");
-        // Pause time.delta time
-        // Transition to Battle UI screen
+        int rand;
+        // Choose a monster to spawn
+        switch (GameControl.control.currentLevel)
+        {
+            case 1:
+                rand = Random.Range(0, 3);
+                GameControl.control.SetCurrentEnemy(encounterTable[rand]);
+                break;
+            case 2:
+                rand = Random.Range(3, 6);
+                GameControl.control.SetCurrentEnemy(encounterTable[rand]);
+                break;
+            case 3:
+                rand = Random.Range(6, 10);
+                GameControl.control.SetCurrentEnemy(encounterTable[rand]);
+                break;
+            default:
+                break;
+
+        }
+        //GameControl.control.StartBattleUI();
     }
 }

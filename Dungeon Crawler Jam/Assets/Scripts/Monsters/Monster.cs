@@ -71,11 +71,11 @@ public class Monster : ScriptableObject
     {
         maxHealth += 10;
         currHealth += 10;
-        int decider1 = Random.Range(0, 3);
-        int decider2 = Random.Range(0, 3);
-        if (decider1 >= 1)
+        int decider = Random.Range(0, 3);
+        if (decider >= 1)
             attack++;
-        if (decider2 >= 1)
+        decider = Random.Range(0, 3);
+        if (decider >= 1)
             defense++;
         currExp -= 100;
         currLevel++;

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerParty : MonoBehaviour
 {
@@ -21,6 +20,19 @@ public class PlayerParty : MonoBehaviour
         }
         return false;
     }*/
+    public void CatchMonster(Monster capturedMonster) {
+        for (int i = 0; i < party.Length; i++)
+        {
+            if (party[i] == null) {
+                SwitchMonster(capturedMonster, i);
+                return;
+            }
+        }
+    }
+
+    public void SwitchMonster(Monster capturedMonster, int position){
+        party[position] = capturedMonster;
+    }
 
     public Monster GetNextAlive() {
         for (int i = 0; i < party.Length; i++)

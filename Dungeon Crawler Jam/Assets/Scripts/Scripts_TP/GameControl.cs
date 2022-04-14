@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum SceneNames
 {
@@ -19,9 +20,23 @@ public class GameControl : MonoBehaviour
 
     [SerializeField]
     private GameLoss gameLossUI;
-
     [SerializeField]
     private SceneMovement sceneMovement;
+    [SerializeField]
+    private GameObject battleUI;
+    [SerializeField]
+    private Player_Movement player;
+    [SerializeField]
+    private GameObject minimap;
+    [SerializeField]
+    public LevelGeneration levelGenerator;
+    [SerializeField]
+    public SpawnPlayer playerSpawner;
+
+    public int currentLevel = 1;
+
+    public Monster currentEnemy;
+    public AssignEnemy currentEnemyUI;
 
     // private BattleUIClass battleUI;
 
@@ -39,7 +54,26 @@ public class GameControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        levelGenerator.GenerateLevel();
+        //playerSpawner.TranslatePlaterToSpawn()
+
         
+        
+    }
+
+    public void SetCurrentEnemy(Monster newCurrent)
+    {
+        //currentEnemy.monsterPic = newCurrent.monsterPic;
+        currentEnemy = newCurrent;
+        if (!currentEnemyUI)
+        {
+            Debug.Log("CurrentEnemyUI is null");
+        }
+        else
+            currentEnemyUI.SetEnemy(currentEnemy);
+
+        StartBattleUI();
     }
 
     public void GameOver()
@@ -61,6 +95,31 @@ public class GameControl : MonoBehaviour
     public void UnPause()
     {
         Time.timeScale = 1;
+    }
+
+    public void LoadLevel(string scene)
+    {
+        sceneMovement.LoadLevel(scene);
+    }
+
+    public void StartBattleUI()
+    {
+        // Turn off Mini-Map
+        minimap.SetActive(false);
+        // Turn on Battle UI
+        if (battleUI)
+            battleUI.SetActive(true);
+        else
+            Debug.Log("BattleUI is null");
+        // Stop Player movement
+        player.inBattle = true;
+    }
+
+    public void StopBattleUI()
+    {
+        battleUI.SetActive(false);
+        player.inBattle = false;
+        minimap.SetActive(true);
     }
 
     private void OnGUI()
