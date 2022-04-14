@@ -6,13 +6,12 @@ public class StarterDecision : MonoBehaviour
 {
     public TextMeshProUGUI selectionText;
     private Monster selectedStarter = null;
-
     void Update()
     {
         if (selectedStarter == null)
             selectionText.text = "Select a starter";
         else
-            selectionText.text = "You've chosen: " + selectedStarter.name + " the " + selectedStarter.type + " type";
+            selectionText.text = "You've chosen: " + selectedStarter.name + " the " + selectedStarter.type + " type";        
     }
 
     public void SelectStarter(Monster monster) {

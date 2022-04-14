@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Scenes_TP/Scene_Transition1.unity
-    guid: 3422ffee978d5554a8ccfba24c103b55
+    path: Assets/Scenes/Title Screen.unity
+    guid: efd3cedde24b38f44998cfe045f35bb0
   - enabled: 1
-    path: Assets/Scenes/Scenes_TP/Prototype_Player_Movement.unity
-    guid: 4097dfb99d575bb4b905686f5dff9977
+    path: Assets/Scenes/Levels/1F.unity
+    guid: bc1de4e63a8608344a1d8c908502b2b6
   m_configObjects: {}

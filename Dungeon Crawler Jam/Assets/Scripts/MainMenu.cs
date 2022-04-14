@@ -12,10 +12,7 @@ public class MainMenu : MonoBehaviour
     public Monster tester, tester2, tester3;
     void Start()
     {
-        PlayerParty.instance.SwitchMonster(tester, 0);
-        PlayerParty.instance.SwitchMonster(tester2, 1);
-        PlayerParty.instance.SwitchMonster(tester3, 2);
-        UpdateParty();
+
     }
 
     // Update is called once per frame
