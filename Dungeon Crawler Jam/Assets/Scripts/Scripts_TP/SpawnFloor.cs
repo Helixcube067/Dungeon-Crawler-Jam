@@ -20,10 +20,14 @@ public class SpawnFloor : MonoBehaviour
 {
     [SerializeField]
     private int numOfSafeTiles = 10;
+    
+
 
     private List<Transform> safeSpawnPositions = new List<Transform>();
+    private List<Transform> encounterSpawnPositions = new List<Transform>();
 
     public GameObject[] floorTiles;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,10 +48,21 @@ public class SpawnFloor : MonoBehaviour
             {
                 GameObject instance = (GameObject)Instantiate(floorTiles[(int)FloorType.FloorEncounter], child.transform.position, Quaternion.identity);
                 instance.transform.parent = transform;
+                encounterSpawnPositions.Add(child);
             }
                 
         }
 
+    }
+
+    public Transform GetRandomEncounterSpot()
+    {
+        int rand = Random.Range(0, encounterSpawnPositions.Count);
+        foreach(Transform child in encounterSpawnPositions)
+        {
+            Debug.Log(child.position);
+        }
+        return encounterSpawnPositions[rand];
     }
 
     public Transform GetRandomSafeSpot()

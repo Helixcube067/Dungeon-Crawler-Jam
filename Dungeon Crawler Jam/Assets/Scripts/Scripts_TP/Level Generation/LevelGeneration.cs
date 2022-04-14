@@ -12,6 +12,7 @@ public class LevelGeneration : MonoBehaviour
 
     [SerializeField, Tooltip("indx 0 = North South, 1 = EWS, 2 = EWN, 3 = NWSE")]
     private GameObject[] dungeonRooms; // index 0 --> EW, index 1 --> EWS, index 2 --> EWN, index 3 --> NWES
+    private HashSet<Vector3> dungeonRoomsSet = new HashSet<Vector3>();
 
     private int rand;
     
@@ -50,21 +51,11 @@ public class LevelGeneration : MonoBehaviour
 
     [HideInInspector]
     public Transform firstRoom;
+
+
+    // Debug / testing vars
+    private Vector3 tempPos;
     
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //rand = Random.Range(0, startingPositions.Length);
-        //transform.position = startingPositions[rand].position;
-        //Instantiate(dungeonRooms[0], transform.position, Quaternion.identity);
-        //// After the first space decided - provide transform to SpawnPlayer.
-        //firstRoom = transform;
-        //spawnPlayer.parentSpawnTransform = transform;
-        //direction = Random.Range(1, 6);
-        
-    }
 
     public void GenerateLevel()
     {
@@ -74,15 +65,15 @@ public class LevelGeneration : MonoBehaviour
         transform.position = startingPositions[rand].position;
         // Place room[0] at current location
         GameObject roomOne = Instantiate(dungeonRooms[0], transform.position, Quaternion.identity);
+        
+        dungeonRoomsSet.Add(tempPos);
         // Assign the room to be the child of the level generator
         roomOne.transform.SetParent(transform);
         firstRoom = roomOne.transform;
         // Set first room to this room so spawnPlayer can find the first room.
         StartCoroutine("PlayerSetUp"); 
-
         // Set direction of next room 
         direction = Random.Range(1, 6);
-        
         stopGeneration = false;
     }
 
@@ -90,6 +81,7 @@ public class LevelGeneration : MonoBehaviour
     {
        yield return new WaitForSeconds(5);
        spawnPlayer.TranslatePlaterToSpawn();
+        GetComponentInChildren<SpawnStairs>().PlaceStairs(); 
     }
 
     private void Update()
@@ -104,12 +96,7 @@ public class LevelGeneration : MonoBehaviour
             timeBtwRoom -= Time.deltaTime;
         }
 
-        // Only one time
-        if(canFill)
-        {
-            FillLevl();
-            canFill = false;
-        }
+        // Fill the level with other rooms.
             
     }
     // This logic spawns a path
@@ -160,6 +147,7 @@ public class LevelGeneration : MonoBehaviour
 
                 randRoom = Random.Range(0, dungeonRooms.Length);
                 Instantiate(dungeonRooms[randRoom], transform.position, Quaternion.identity);
+               
                 Debug.Log("Move left room spawned at " + transform.position);
                 return;
 
@@ -190,6 +178,7 @@ public class LevelGeneration : MonoBehaviour
                                 randBottomRoom = 1;
                             }
                             Instantiate(dungeonRooms[randBottomRoom], transform.position, Quaternion.identity);
+                            
                             Debug.Log("Move down room spawned at " + transform.position);
 
 
@@ -208,41 +197,32 @@ public class LevelGeneration : MonoBehaviour
 
 
                 Instantiate(dungeonRooms[rand], transform.position, Quaternion.identity);
+                Debug.Log(this.transform.position);
+
                 Debug.Log("Move Down 2 room spawned at " + transform.position);
             }
             else
             {
                 // Stop Level Generation 
-                
+
                 stopGeneration = true;
                 canFill = true;
             }
             
             return;
         }
-
-        Debug.Log("instantiating at X = " + transform.position.x + " and Z = " + transform.position.z + " Direction = " + direction);
         
     }
 
     // Iterate through the remaining positions, check for a room there, if no room spawn a random one.
     private void FillLevl()
     {
-        //Debug.Log("Called fill");
+        Debug.Log("Called fill");
 
-        //foreach(Vector3 positions in spawnPos)
-        //{
-        //    Debug.Log(transform.position);
-        //}
+        // Check if each spawn was instantiated 
 
-        //for(int i = 0; i < allSpawnPositions.Length; i++)
-        //{
-        //    if(!spawnPos.Contains(allSpawnPositions[i].transform.position))
-        //    {
-        //        Debug.Log("spawning at " + allSpawnPositions[i]);
-        //        Instantiate(dungeonRooms[0], allSpawnPositions[i].position, Quaternion.identity);
-        //    }
-        //}
+        
+
     }
 
 }

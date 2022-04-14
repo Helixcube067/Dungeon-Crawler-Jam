@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Debug_Script : MonoBehaviour
 {
+    public SceneMovement sceneMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,10 @@ public class Debug_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            sceneMovement.LoadLevel("Level_Dungeon");
+        }
     }
 
     public void ClickTest()
